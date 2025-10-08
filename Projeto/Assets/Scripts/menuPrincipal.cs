@@ -3,12 +3,24 @@ using UnityEngine.SceneManagement;
 
 public class menuPrincipal : MonoBehaviour
 {
-   [SerializeField] private string NomeDaFase;
+   
    [SerializeField] private GameObject painelmenuinicial;
    [SerializeField] private GameObject painelopcoes;
+   [SerializeField] private GameObject MenudoNewGame;
     public void Iniciar()
     {
+       MenudoNewGame.SetActive(true);
+    }
+
+    public void NovoJogo()
+    {
         SceneManager.LoadScene("MapaT");
+    }
+
+    public void VoltarAoMenu()
+    {
+       painelmenuinicial.SetActive(true);
+        MenudoNewGame.SetActive(false);
     }
 
     public void AbrirOpcoes()
