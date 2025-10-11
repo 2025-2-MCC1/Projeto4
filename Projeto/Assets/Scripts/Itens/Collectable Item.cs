@@ -8,11 +8,10 @@ public class CollectableItem : Interactable
     public override void Interact()
     {
         //adicionar ao inventário
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("Coletou " + item.name);
-            Destroy(gameObject);
-        }
+
+        Inventory.SetItem(item);    
+        Debug.Log("Coletou " + item.name);
+        Destroy(gameObject);
         
     }
 }
