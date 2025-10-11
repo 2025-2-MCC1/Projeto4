@@ -22,10 +22,12 @@ public class RotacaoDaSala : MonoBehaviour
 
     void Start()
     {
-        currentSnapAngle = 90f;
+        currentSnapAngle = 0f;
         targetRotation = Quaternion.Euler(0, currentSnapAngle, 0);
         transform.rotation = targetRotation;
         nextSnapAngle = currentSnapAngle;
+
+        AtualizarParedes();
     }
 
     void Update()
@@ -125,37 +127,47 @@ public class RotacaoDaSala : MonoBehaviour
 
     void AtualizarParedes()
     {
-        float angle = Mathf.Round(transform.eulerAngles.y) % 360;
+        float angulo = transform.eulerAngles.y;
 
-        switch ((int)angle)
+        // Normaliza o ângulo entre 0 – 360
+        angulo = (angulo + 360f) % 360f;
+
+        // INTERVALOS 
+
+        // 0° = entre 315° e 45°
+        if (angulo >= 315f || angulo < 45f)
         {
-            case 0:
-                Parede1.SetActive(true);
-                Parede2.SetActive(false);
-                Parede3.SetActive(false);
-                Parede4.SetActive(true);
-                break;
+            Parede1.SetActive(true);
+            Parede2.SetActive(false);
+            Parede3.SetActive(false);
+            Parede4.SetActive(true);
+        }
 
-            case 90:
-                Parede1.SetActive(true);
-                Parede2.SetActive(false);
-                Parede3.SetActive(true);
-                Parede4.SetActive(false);
-                break;
+        // 90° = entre 45° e 135°
+        else if (angulo >= 45f && angulo < 135f)
+        {
+            Parede1.SetActive(true);
+            Parede2.SetActive(false);
+            Parede3.SetActive(true);
+            Parede4.SetActive(false);
+        }
 
-            case 180:
-                Parede1.SetActive(false);
-                Parede2.SetActive(true);
-                Parede3.SetActive(true);
-                Parede4.SetActive(false);
-                break;
+        // 180° = entre 135° e 225°
+        else if (angulo >= 135f && angulo < 225f)
+        {
+            Parede1.SetActive(false);
+            Parede2.SetActive(true);
+            Parede3.SetActive(true);
+            Parede4.SetActive(false);
+        }
 
-            case 270:
-                Parede1.SetActive(false);
-                Parede2.SetActive(true);
-                Parede3.SetActive(false);
-                Parede4.SetActive(true);
-                break;
+        // 270° = entre 225° e 315°
+        else if (angulo >= 225f && angulo < 315f)
+        {
+            Parede1.SetActive(false);
+            Parede2.SetActive(true);
+            Parede3.SetActive(false);
+            Parede4.SetActive(true);
         }
     }
 }
