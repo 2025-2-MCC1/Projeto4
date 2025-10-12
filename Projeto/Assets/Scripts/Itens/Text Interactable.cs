@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TextInteractable : Interactable
 {
@@ -8,7 +9,11 @@ public class TextInteractable : Interactable
     public Sprite portraitImage;
 
     public string conditionalText;
-    public Item conditionalItem;
+    
+
+    public bool useItem;
+    public Item newItem;
+    public UnityEvent onUseItem;
 
     public override void Interact()
     {

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class UiManager : MonoBehaviour
 {
@@ -61,7 +60,7 @@ public class UiManager : MonoBehaviour
         }
 
         instance.portrait.sprite = interactable.portraitImage;
-
+        
         if(interactable.conditionalItem != null)
         {
             Debug.Log("Tem item condicional");
@@ -69,6 +68,11 @@ public class UiManager : MonoBehaviour
             {
                 Debug.Log("Tem o item");
                 instance.interactionText.text = interactable.conditionalText;
+                if(interactable.useItem)
+                {
+                    Inventory.UseItem(interactable.conditionalItem);
+                    interactable.onUseItem.Invoke();
+                }
             }
             else
             {
@@ -97,6 +101,23 @@ public class UiManager : MonoBehaviour
         if(instance.textInteractable != null)
         {
             instance.textInteractable.isInteracting = false;
+        }
+    }
+
+    public static void RemoveInventoryImage(Item item)
+    {
+        if(item == null)
+        {
+            return;
+        }
+
+        for(int i = 0; i <instance.iventoryImages.Length; i++)
+        {
+            if (instance.iventoryImages[i].sprite == item.itemImage)
+            {
+                instance.iventoryImages[i].gameObject.SetActive(true);
+                break;
+            }
         }
     }
 }

@@ -50,5 +50,6 @@ public class Inventory : MonoBehaviour
         }
 
         instance.items.Remove(item);
+        UiManager.RemoveInventoryImage(item);
     }
 }
