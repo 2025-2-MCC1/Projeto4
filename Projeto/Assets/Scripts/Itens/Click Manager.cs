@@ -20,6 +20,7 @@ public class ClickManager : MonoBehaviour
                 if (interactable != null)
                 {
                     interactable.Interact(); // executa o comportamento (no caso, coletar e destruir)
+                    UiManager.DisableInteraction();
                 }
             }
         }
