@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/*
 public class TextInteractable : Interactable
 {
     public string text;
@@ -15,6 +16,7 @@ public class TextInteractable : Interactable
     public Item newItem;
     public UnityEvent onUseItem;
 
+    
     public override void Interact()
     {
         if (isInteracting)
@@ -24,5 +26,6 @@ public class TextInteractable : Interactable
 
         isInteracting = true;
         UiManager.SetText(this);
-    }
+    }  
 }
+*/

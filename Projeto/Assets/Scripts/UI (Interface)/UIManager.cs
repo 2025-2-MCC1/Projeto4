@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
@@ -15,8 +16,6 @@ public class UiManager : MonoBehaviour
     public GameObject interactionPanel;
     public TMP_Text interactionText;
     public Image portrait;
-
-    TextInteractable textInteractable;
 
 
     private void Awake()
@@ -52,72 +51,8 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    public static void SetText(TextInteractable interactable)
+    internal static void RemoveInventoryImage(Item usedItem)
     {
-        if (instance == null)
-        {
-            return;
-        }
-
-        instance.portrait.sprite = interactable.portraitImage;
-        
-        if(interactable.conditionalItem != null)
-        {
-            Debug.Log("Tem item condicional");
-            if(Inventory.HasItem(interactable.conditionalItem))
-            {
-                Debug.Log("Tem o item");
-                instance.interactionText.text = interactable.conditionalText;
-                if(interactable.useItem)
-                {
-                    Inventory.UseItem(interactable.conditionalItem);
-                    interactable.onUseItem.Invoke();
-                }
-            }
-            else
-            {
-                Debug.Log("Jogador não tem o item");
-                instance.interactionText.text = interactable.conditionalText;
-            }
-        }
-        else
-        {
-            Debug.Log("Não tem item condicional");
-            instance.interactionText.text = interactable.conditionalText;
-        }
-
-        instance.interactionPanel.SetActive(true);
-        instance.textInteractable = interactable;
-    }
-
-    public static void DisableInteraction()
-    {
-        if(instance == null)
-        {
-            return;
-        }
-        
-        instance.interactionPanel.SetActive(false);
-        if(instance.textInteractable != null)
-        {
-            instance.textInteractable.isInteracting = false;
-        }
-    }
-
-    public static void RemoveInventoryImage(Item item)
-    {
-        if(item == null)
-        {
-            return;
-        }
-
-        for(int i = 0; i <instance.iventoryImages.Length; i++)
-        {
-            if (instance.iventoryImages[i].sprite == item.itemImage)
-            {
-                instance.iventoryImages[i].gameObject.SetActive(true);
-                break;
-            }
-        }
+        throw new NotImplementedException();
     }
 }

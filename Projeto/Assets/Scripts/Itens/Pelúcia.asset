@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8a5f9dc5bc55b6438562dd52d750d04, type: 3}
   m_Name: "Pel\xFAcia"
   m_EditorClassIdentifier: 
-  itemName: PlushTrap
-  itemImage: {fileID: 21300000, guid: ef86f772c5149d141b52a78c7b91f5c3, type: 3}
+  itemID: Pelucia
+  itemName: "Pel\xFAcia"
+  itemImage: {fileID: 21300000, guid: 3dafb327113d01a4e9ae50c38e94bcef, type: 3}
   description: "T\xE1 na lot\xE9rica"

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum ObjectType
 {
-    ground, door, text, dialogue, collectable, none
+    ground, door, text, dialogue, collectable, none, interactable
 }
 
 public class Outline : MonoBehaviour

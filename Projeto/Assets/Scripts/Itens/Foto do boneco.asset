@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8a5f9dc5bc55b6438562dd52d750d04, type: 3}
-  m_Name: Celular
+  m_Name: Foto do boneco
   m_EditorClassIdentifier: 
-  itemID: Celular1
-  itemName: Celular
-  itemImage: {fileID: 21300000, guid: cb58b5a9ed519a247905536bcf123dad, type: 3}
-  description: "T\xE1 na cama"
+  itemID: Meu_boneco
+  itemName: Meu boneco
+  itemImage: {fileID: 21300000, guid: b2f0e278def476742b5a26b4864abf71, type: 3}
+  description: I am the power
