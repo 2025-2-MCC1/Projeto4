@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public List<Item> items = new List<Item>();
-    public List<ItemSlot> itemSlots = new List<ItemSlot>();
+    public List<Item> items = new List<Item>();     //função que cria uma lista de itens
+    public List<ItemSlot> itemSlots = new List<ItemSlot>();     //função que permite atualiazar essa lista com cada item selecionado
 
-    public static Inventory instance;
+    public static Inventory instance;       //torna o inventário uma instância que pode ser usada em outros scripts
 
-    private void Awake()
+    private void Awake()        //função chamada antes do primeiro frame
     {
+        //permite que o inventário seja salvo para ser mantido o mesmo independente da cena
         if (instance == null)
         {
             instance = this;
@@ -40,33 +41,37 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public static void SetItem(Item item)
+    public static void SetItem(Item item)       //função que adiciona o item ao inventário
     {
-        if (instance == null) return;
+        if (instance == null) return;       //se não tiver nada, retorna
 
-        instance.items.Add(item);
-        UiManager.SetInventoryImage(item);
+        instance.items.Add(item);       //adiciona o item ao inventário
+        UiManager.SetInventoryImage(item);      //coloca a imagem desse item no UI do inventário
     }
 
-    public static bool HasItem(Item item)
+    public static bool HasItem(Item item)       //função para a verificação se o item existe no inventário
     {
-        if (instance == null) return false;
-        return instance.items.Contains(item);
+        if (instance == null) return false;     //se não tiver nada, retorna falso
+        return instance.items.Contains(item);       //retorna a quatidade e se contém o item
     }
 
 
-    public ItemSlot selectedSlot;
+    public ItemSlot selectedSlot;       //função para slots do inventário selecionados
 
+    //SELECIONA O SLOT
     public void SetSelectedSlot(ItemSlot slot)
     {
         selectedSlot = slot;
     }
 
 
-    public void DeselectAllSlots()
+    //DESSELECIONA O SLOT
+    public void DeselectAllSlots()      //função para desselecionar os slots
     {
+        //faz a contagem dos slots
         for (int i = 0; i < itemSlots.Count; i++)
         {
+            //verifica se o slot está selecionado e desseleciona ele
             var slot = itemSlots[i];
             if (slot != null)
             {

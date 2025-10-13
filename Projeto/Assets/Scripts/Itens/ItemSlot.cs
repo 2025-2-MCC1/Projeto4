@@ -2,26 +2,26 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler
+public class ItemSlot : MonoBehaviour, IPointerClickHandler     //IPointerClickHandler permite a interação com objetos 2D como a UI do inventário
 {
     [Header("UI")]
-    public GameObject selectedShader; // painel de destaque (SelectedPanel)
-    public bool thisItemSelected;
+    public GameObject selectedShader;       //função que verifica se o painel de destaque (SelectedPanel) está ativo
+    public bool thisItemSelected;       //função que verifica se o item está selecionado ou não
     public Item Item;
 
     [Header("Runtime")]
-    public Inventory inventory; // pode arrastar no inspector ou será buscado no Start
+    public Inventory inventory;     //pode arrastar no inspector ou será buscado no Start
 
     private void Awake()
     {
-        // garante que o shader comece invisível
+        //garante que o shader comece invisível
         if (selectedShader != null)
             selectedShader.SetActive(false);
     }
 
     private void Start()
     {
-        // tenta resolver o inventory automaticamente se não foi definido no inspector
+        //tenta resolver o inventory automaticamente se não foi definido no inspector
         if (inventory == null)
         {
             inventory = GetComponentInParent<Inventory>();
@@ -34,6 +34,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         Debug.Log($"ItemSlot.Start - name: {gameObject.name} | inventory: {(inventory != null ? inventory.name : "null")} | selectedShader: {(selectedShader != null ? selectedShader.name : "null")}");
     }
 
+    //faz o inventário poder ser clicável
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log($"ItemSlot.OnPointerClick on {gameObject.name} button: {eventData.button}");
@@ -43,6 +44,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             OnRightClick();
     }
 
+    //faz a verificação se o item está no slot ou se é um slot vazio
     private void OnLeftClick()
     {
         if (inventory == null)
@@ -51,14 +53,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             return;
         }
 
-        // se já estava selecionado, desseleciona tudo
+        //se o slot já estava selecionado, desseleciona tudo
         if (thisItemSelected)
         {
             inventory.DeselectAllSlots();
             return;
         }
 
-        // limpa todos e seleciona este
+        //desseleciona todos os slots e seleciona este
         inventory.DeselectAllSlots();
         Select();
     }
@@ -75,7 +77,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
         thisItemSelected = true;
 
-        // Atualiza o slot selecionado no Inventory
+        //atualiza o slot selecionado no Inventory
         if (inventory != null)
         {
             inventory.SetSelectedSlot(this);

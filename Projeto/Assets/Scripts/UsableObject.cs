@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-//precisa fazer certinho
+//PRECISA MONTAR O CÓDIGO DA MANEIRA CORRETA
 
 public class UsableObject : Interactable
 {

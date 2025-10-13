@@ -9,15 +9,15 @@ public class ClickManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) // clique esquerdo do mouse
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            //determina o "raio" que o mouse estava clicando e se o objeto era um com interação
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);     
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, clickRange))
+            if (Physics.Raycast(ray, out hit, clickRange))      //verifica se o sinal foi recebido como true
             {
-                // verifica se o objeto clicado tem um Interactable
-                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                Interactable interactable = hit.collider.GetComponent<Interactable>();// verifica se o objeto clicado tem um Interactable
 
-                if (interactable != null)
+                if (interactable != null)       //determina que se o objeto interativo existe, ou seja é diferente de null(nada)
                 {
                     interactable.Interact(); // executa o comportamento (no caso, coletar e destruir)
                     
