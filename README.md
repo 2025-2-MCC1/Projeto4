@@ -62,35 +62,39 @@ Androide:
 
 Faça o Download do JOGO.apk no seu celular. Execute o APK e siga as instruções do seu telefone.
 
-Coloque código do prompt de comnando se for necessário
+Coloque código do prompt de comnando se for necessário <br>
 Windows:
-
-Não há instalação! Apenas possível! Encontre o JOGO.exe na pasta apresentada e execute-o como qualquer outro programa.
+Não há instalação! 
+Apenas possível! Encontre o JOGO.exe na pasta apresentada e execute-o como qualquer outro programa.
 
 Coloque código do prompt de comnando se for necessário
 HTML:
+Não há instalação! Encontre o index.html na pasta encontrada e execute-o como uma página WEB (através de algum navegador). 
 
-Não há instalação! Encontre o index.html na pasta encontrada e execute-o como uma página WEB (através de algum navegador).
 
-💻 Configuração para Desenvolvimento
-Descreva como instalar todas as dependências para desenvolvimento e como rodar uma suíte de testes automatizada de algum tipo. Se necessário, faça isso para múltiplas plataformas.
+💻 CONFIGURAÇÃO PARA DESENVOLVIMENTO <br>
+Para abrir e rodar este projeto, você precisará das seguintes ferramentas:
 
-Para abrir este projeto você precisa das seguintes ferramentas:
+[Unity 6000.0.38](https://unity.com/pt/releases/editor/whats-new/6000.0.38f1)
 
-- GODOT
 
-make install
-npm test
-Coloque código do prompt de comnando se for necessário
-📋 Licença/License
+Clone o Repositório: <br>
+<code>(https://github.com/2025-2-MCC1/Projeto4)</code>
+
+Faça o seguinte passo a passo: <br>
+<code>Abra/instale o Unity 6000.0.38f1: Clique em Open Project e selecione a pasta onde se encontra o projeto.
+ Configure a cena inicial: Assets>SCR>CENAS e abra a cena inicial (Menu).
+ Execute o jogo: Pressione o botão Play no editor do Unity.</code>
+
+📋 LICENÇA/LICENSE <br>
 Utilize o link https://chooser-beta.creativecommons.org/ para fazer uma licença CC BY 4.0.
 
 🎓 Referências
 Aqui estão as referências usadas no projeto.
 
-https://github.com/iuricode/readme-template
-https://github.com/gabrieldejesus/readme-model
-https://chooser-beta.creativecommons.org/
-https://freesound.org/
-https://www.toptal.com/developers/gitignore
-Músicas de: DaveJf e DRFX ambas com Licença CC 0.
+https://github.com/iuricode/readme-template <br>
+https://github.com/gabrieldejesus/readme-model <br>
+https://chooser-beta.creativecommons.org/ <br>
+https://freesound.org/ <br>
+https://www.toptal.com/developers/gitignore <br>
+Músicas de: DaveJf e DRFX ambas com Licença CC 0. <br>
