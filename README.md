@@ -32,6 +32,8 @@ O jogo busca em sua grande parte entreter e reforçar a reflexão e visão lógi
 <br><br>
 O jogo até então foca nas implementações da estrutura básica e na programação das cenas iniciais, o Menu Principal conta com três botões: PLAY, SETTINGS e QUIT. Ao acessar a aba de settings, estão disponíveis dois componentes, o controle de volume do jogo e a sensibilidade da rotação do mouse, ambos ainda inoperantes nesta fase do desenvolvimento. Retornando ao Menu Principal, ao clicar em play, o jogador é direcionado para uma tela com quatro opções: Novo Jogo, Carregar Jogo, Salvar Jogo e voltar ao menu principal. No momento, apenas as opções Novo Jogo e voltar ao menu principal estão funcionais, levando o jogador diretamente à Cena do Jogo Principal. Em relação à programação do menu, foram criadas variáveis correspondentes a cada menu e botão dentro do jogo, além de um sistema baseado em variáveis usando o sistema de true ou false, utilizando métodos public void como base do código neste estágio do projeto.
 <br><br>
+Até o momento o jogo encontra-se com uma única cena principal, que, por se tratar de um quarto contará com as mobílias adequadas (como cama, armários, mesa, escrivaninha, entre outros). Uma parte dessas mobílias serão interativas com o jogador, que ao clicar em determinada, terá a oportunidade de ver o que a mobília armazena, e se for parte da trama do jogo ele terá a chance de usar o item para a resolução de puzzles (por exemplo, será possível abrir um armário, e ver se dentro dele há algum item que possa ser usado na resolução de algum dos quebra-cabeças da cena).
+<br><br>
 
 
 # Projeto 4
