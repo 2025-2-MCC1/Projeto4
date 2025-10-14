@@ -11,13 +11,13 @@ Vide tutoriais do PI.
 <a href= "https://www.fecap.br/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhZPrRa89Kma0ZZogxm0pi-tCn_TLKeHGVxywp-LXAFGR3B1DPouAJYHgKZGV0XTEf4AE&usqp=CAU" alt="FECAP - Fundação de Comércio Álvares Penteado" border="0"></a>
 </p>
 
-# Nome do Projeto
+# FOBO'S ROOM
 
-## Nome do Grupo
+## MW BUGS
 
-## Integrantes: <a href="https://www.linkedin.com/in/victorbarq/">Goku Sayajin</a>, <a href="https://www.linkedin.com/in/victorbarq/">Saitama One</a>, <a href="https://www.linkedin.com/in/victorbarq/">Ikki de Fenix</a>, <a href="https://www.linkedin.com/in/victorbarq/">Yusuke Urameshi</a>, <a href="https://www.linkedin.com/in/victorbarq/">Roronoa Zoro</a>
+## Integrantes: [Emilly Oliveira](https://www.linkedin.com/in/emilly-oliveira-860ba32b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app), [Guilherme Belcastro Medeiros](www.linkedin.com/in/guilherme-belcastro-medeiros-785598281), [Kaike Cavalcante](https://www.linkedin.com/in/kaike-cavalcante-7283a0266?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app), [Lucas de Freitas](https://www.linkedin.com/in/lucas-soares-a6b677364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app).
 
-## Professores Orientadores: <a href="https://www.linkedin.com/in/victorbarq/">Dr. Victor Von Doom</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Saitama</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Strange</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Yoda</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Gero</a>
+## Professores Orientadores: <a href="https://www.linkedin.com/in/victorbarq/">Victor Bruno Alexander Rosetti de Quiroz</a>, <a href="https://www.linkedin.com/in/adriano-valente-534576135/">Adriano Valente</a>, <a href="https://www.linkedin.com/in/remuniz/">Renata Muniz do Nascimento</a>, <a href="https://www.linkedin.com/in/luisspires/">Luis Fernando dos Santos Pires</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Gero</a>
 
 ## Descrição
 
@@ -27,12 +27,11 @@ Vide tutoriais do PI.
 </p>
 
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
+A trama se dá em volta de Fobo (personagem principal) e seu quarto, sendo assim, de maneira resumida, a história: Teremos Fobo, um personagem que está preso em seu próprio quarto, e para escapar desse ambiente, será necessário a resolução de alguns puzzles e a descoberta de alguns itens especiais que ficam escondidos pela cena. O jogo será no estilo terror psicológico, girando em torno de um universo turvo, no qual o personagem corre o risco iminente de ser capturado por uma entidade. O jogo retrata condições em um ambiente que muitas vezes parece irreal e, conforme as decisões do jogador durante a trama, a questão da sanidade seria afetada mudando as condições da sala e seu aspecto. Assim, a entidade que se esconde, se mostraria mais de acordo com o nível de sanidade do personagem.
 <br><br>
-Meu projeto ajuda estudantes FECAP a configurarem seus githubs.
+O jogo até então foca nas implementações da estrutura básica e na programação das cenas iniciais, o Menu Principal conta com três botões: PLAY, SETTINGS e QUIT. Ao acessar a aba de settings, estão disponíveis dois componentes, o controle de volume do jogo e a sensibilidade da rotação do mouse, ambos ainda inoperantes nesta fase do desenvolvimento. Retornando ao Menu Principal, ao clicar em play, o jogador é direcionado para uma tela com quatro opções: Novo Jogo, Carregar Jogo, Salvar Jogo e voltar ao menu principal. No momento, apenas as opções Novo Jogo e voltar ao menu principal estão funcionais, levando o jogador diretamente à Cena do Jogo Principal. Em relação à programação do menu, foram criadas variáveis correspondentes a cada menu e botão dentro do jogo, além de um sistema baseado em variáveis usando o sistema de true ou false, utilizando métodos public void como base do código neste estágio do projeto.
 <br><br>
-May the force be with you!
-<br><br>
+
 
 ## 🛠 Estrutura de pastas
 
@@ -78,9 +77,8 @@ Coloque código do prompt de comnando se for necessário
 
 <b>Windows:</b>
 
-Não há instalação! Apenas executável!
-Encontre o JOGO.exe na pasta executáveis e execute-o como qualquer outro programa.
-
+Não há instalação!
+Execute o index.htmllocalizado na pasta executáveis/HTMLem qualquer navegador de internet. 
 ```sh
 Coloque código do prompt de comnando se for necessário
 ```
@@ -92,16 +90,20 @@ Encontre o index.html na pasta executáveis e execute-o como uma página WEB (at
 
 ## 💻 Configuração para Desenvolvimento
 
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
-
 Para abrir este projeto você necessita das seguintes ferramentas:
 
--<a href="https://godotengine.org/download">GODOT</a>
+-<a href="https://unity.com/pt/releases/editor/whats-new/6000.0.38f1">Unity 6000.0.38</a>
 
+Clone o repositório: <br>
 ```sh
-make install
-npm test
-Coloque código do prompt de comnando se for necessário
+https://github.com/2025-2-MCC1/Projeto4
+```
+
+Faça o seguinte passo a passo: <br>
+```sh
+Abra/instale o Unity 6000.0.38f1: Clique em Open Project e selecione a pasta onde se encontra o projeto.
+ Configure a cena inicial: Assets>SCR>CENAS e abra a cena inicial (Menu).
+ Execute o jogo: Pressione o botão Play no editor do Unity.
 ```
 
 ## 📋 Licença/License
