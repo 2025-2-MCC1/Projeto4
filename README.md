@@ -35,19 +35,20 @@ O jogo até então foca nas implementações da estrutura básica e na programa�
 
 ## 🛠 Estrutura de pastas
 
-📂 Projeto3/
-│
-├── 📂 Documentos/
-│ └── 📂 Entrega1/
-│ ├── 📂 Algoritmo_e_Logica_de_Programacao/
-│ ├── 📂 Calculo_1/
-│ ├── 📂 Projeto_Interdisciplinar_Jogos_Digitais/
-│ └── 📂 Etica_e_Pensamento_Computacional/
-│
-├── 📂 Src/
-│ └── 📂 Entrega1/
-│ ├── 📂 Back_end/
-│ └── 📂 Front_end/
+# Projeto3
+
+- 📂 Documentos
+  - 📂 Entrega1
+    - 📂 Algoritmo_e_Logica_de_Programacao
+    - 📂 Calculo_1
+    - 📂 Projeto_Interdisciplinar_Jogos_Digitais
+    - 📂 Etica_e_Pensamento_Computacional
+
+- 📂 Src
+  - 📂 Entrega1
+    - 📂 Back_end
+    - 📂 Front_end
+
 
 A pasta raiz contem dois arquivos que devem ser alterados:
 
