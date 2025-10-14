@@ -34,9 +34,9 @@ O jogo até então foca nas implementações da estrutura básica e na programa�
 <br><br>
 
 
-## 🛠 Estrutura de pastas
+# Projeto 4
 
-# Projeto4
+## 🛠 Estrutura de pastas
 
 - 📂 Documentos
   - 📂 Entrega1
@@ -55,7 +55,7 @@ A pasta raiz contem dois arquivos que devem ser alterados:
 
 <b>README.MD</b>: Arquivo que serve como guia e explicação geral sobre seu projeto. O mesmo que você está lendo agora.
 
-Há também 4 pastas que seguem da seguinte forma:
+Há também 2 pastas que seguem da seguinte forma:
 
 <b>documentos</b>: Toda a documentação estará nesta pasta.
 
