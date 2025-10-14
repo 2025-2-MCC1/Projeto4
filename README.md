@@ -35,20 +35,19 @@ O jogo até então foca nas implementações da estrutura básica e na programa�
 
 ## 🛠 Estrutura de pastas
 
--Raiz<br>
-|<br>
-|-->documentos<br>
-  &emsp;|-->antigos<br>
-  &emsp;|Documentação.docx<br>
-|-->executáveis<br>
-  &emsp;|-->windows<br>
-  &emsp;|-->android<br>
-  &emsp;|-->HTML<br>
-|-->imagens<br>
-|-->src<br>
-  &emsp;|-->Backend<br>
-  &emsp;|-->Frontend<br>
-|readme.md<br>
+📂 Projeto3/
+│
+├── 📂 Documentos/
+│ └── 📂 Entrega1/
+│ ├── 📂 Algoritmo_e_Logica_de_Programacao/
+│ ├── 📂 Calculo_1/
+│ ├── 📂 Projeto_Interdisciplinar_Jogos_Digitais/
+│ └── 📂 Etica_e_Pensamento_Computacional/
+│
+├── 📂 Src/
+│ └── 📂 Entrega1/
+│ ├── 📂 Back_end/
+│ └── 📂 Front_end/
 
 A pasta raiz contem dois arquivos que devem ser alterados:
 
