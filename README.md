@@ -15,7 +15,7 @@ Vide tutoriais do PI.
 
 ## MW BUGS
 
-## Integrantes: [Emilly Oliveira](https://www.linkedin.com/in/emilly-oliveira-860ba32b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app), [Guilherme Belcastro Medeiros](www.linkedin.com/in/guilherme-belcastro-medeiros-785598281), [Kaike Cavalcante](https://www.linkedin.com/in/kaike-cavalcante-7283a0266?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app), [Lucas de Freitas](https://www.linkedin.com/in/lucas-soares-a6b677364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app).
+## Integrantes: [Emilly Oliveira](https://www.linkedin.com/in/emilly-oliveira-860ba32b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app), [Guilherme Belcastro Medeiros](https://www.linkedin.com/in/guilherme-belcastro-medeiros-785598281), [Kaike Cavalcante](https://www.linkedin.com/in/kaike-cavalcante-7283a0266?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app), [Lucas de Freitas](https://www.linkedin.com/in/lucas-soares-a6b677364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app).
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/victorbarq/">Victor Bruno Alexander Rosetti de Quiroz</a>, <a href="https://www.linkedin.com/in/adriano-valente-534576135/">Adriano Valente</a>, <a href="https://www.linkedin.com/in/remuniz/">Renata Muniz do Nascimento</a>, <a href="https://www.linkedin.com/in/luisspires/">Luis Fernando dos Santos Pires</a>, <a href="">Joyce Daniele Tavares</a>
 
