@@ -20,6 +20,8 @@ public class RotacaoDaSala : MonoBehaviour
     private float currentSnapAngle;     //demonstra o ângulo atual (arredondando para os múltiplos do 90º)
     private float nextSnapAngle;        //determina o próxima ângulo (mantendo os múltiplos de 90º)
 
+    public static RotacaoDaSala Instance;
+
     void Start()        //Determina tudo o que vai ocorrer no ínicio do jogo
     {
         currentSnapAngle = 0f;      //determina o ângulo inicial da sala
@@ -109,14 +111,14 @@ public class RotacaoDaSala : MonoBehaviour
         }
 
         //ROTAÇÃO DA SALA ATRAVÉS DAS TECLAS/SETAS
-        if (Input.GetKeyDown(KeyCode.RightArrow) && !isRotating)
+        if (Input.GetKeyDown(KeyCode.A) && !isRotating)
         {
             currentSnapAngle = Mathf.Round(transform.eulerAngles.y / 90f) * 90f;
             nextSnapAngle = (currentSnapAngle - 90f + 360f) % 360f;
             targetRotation = Quaternion.Euler(0, nextSnapAngle, 0);
             isRotating = true;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && !isRotating)
+        else if (Input.GetKeyDown(KeyCode.D) && !isRotating)
         {
             currentSnapAngle = Mathf.Round(transform.eulerAngles.y / 90f) * 90f;
             nextSnapAngle = (currentSnapAngle + 90f) % 360f;
@@ -173,5 +175,16 @@ public class RotacaoDaSala : MonoBehaviour
             Parede4.SetActive(true);
         }
     }
+
+    public void OnPauseRoomRotate()
+    {
+
+        Time.timeScale = 0;
+    }
+    public void OnResumeRoomRotate()
+    {
+        Time.timeScale = 1;
+    }
+
 }
 
