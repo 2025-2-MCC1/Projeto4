@@ -5900,8 +5900,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3145032705448045912, guid: 02181a3f2bed84640bb037db4f3bfc38, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145032705448045912, guid: 02181a3f2bed84640bb037db4f3bfc38, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 879154140}
+    - target: {fileID: 3145032705448045912, guid: 02181a3f2bed84640bb037db4f3bfc38, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndPuzzle
       objectReference: {fileID: 0}
     - target: {fileID: 5080654223927317183, guid: 02181a3f2bed84640bb037db4f3bfc38, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5985,7 +5993,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5992560131714202753, guid: 02181a3f2bed84640bb037db4f3bfc38, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1628802069}
+      addedObject: {fileID: 1628802077}
+    - targetCorrespondingSourceObject: {fileID: 5992560131714202753, guid: 02181a3f2bed84640bb037db4f3bfc38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1628802078}
   m_SourcePrefab: {fileID: 100100000, guid: 02181a3f2bed84640bb037db4f3bfc38, type: 3}
 --- !u!4 &1628802063 stripped
 Transform:
@@ -6017,7 +6028,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5992560131714202753, guid: 02181a3f2bed84640bb037db4f3bfc38, type: 3}
   m_PrefabInstance: {fileID: 1628802062}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1628802069
+--- !u!95 &1628802077
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -6039,6 +6050,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1628802078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628802068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 013a8c61aa4d475479f36b781bca138b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lockInterativo: {fileID: 6861829468445601639}
+  _lockPuzzle: {fileID: 1628802068}
+  _vc: {fileID: 1813091416}
 --- !u!224 &1639530699 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2654052647144819797, guid: 641c1079dc90513479afc4be65ab2476, type: 3}
