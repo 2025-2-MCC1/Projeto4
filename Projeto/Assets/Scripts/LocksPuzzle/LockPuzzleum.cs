@@ -15,6 +15,7 @@ public class LockPuzzleum : MonoBehaviour
     [SerializeField] private GameObject _lockInterativo;
     [SerializeField] private GameObject _lockPuzzle;
     [SerializeField] private GameObject _vc;
+    [SerializeField] private GameObject _Lock;
 
     private bool _puzzlesStarts;
     //private float _rotationStep = 20f;
@@ -42,7 +43,7 @@ public class LockPuzzleum : MonoBehaviour
 
     void Start()
     {
-        EndPuzzle();
+        
 
     }
 
@@ -317,23 +318,19 @@ public class LockPuzzleum : MonoBehaviour
     public void EndPuzzle()
     {
         GameManager.Instance.UnPauseGame();
-        _lockInterativo.SetActive(true);
+        _lockInterativo.SetActive(false);
         _lockPuzzle.SetActive(false);
         _vc.SetActive(false);
         _puzzlesStarts = false;
-        rotacaoDaSala.OnResumeRoomRotate();
     }
 
     IEnumerator PuzzleCompleto()
     {
         GameManager.Instance.UnPauseGame();
-        //animação
         anim.SetTrigger("Aberto");
-        yield return new WaitForSeconds(1f);
-        _lockInterativo.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
         EndPuzzle();
-        _evento.Invoke();
-        this.gameObject.SetActive(false);
+        
     }
 
     IEnumerator PuzzleStart()
@@ -344,6 +341,5 @@ public class LockPuzzleum : MonoBehaviour
         _lockInterativo.SetActive(false);
         _lockPuzzle.SetActive(true);
         _puzzlesStarts = true;
-        rotacaoDaSala.OnPauseRoomRotate();
     }
 }

@@ -111,14 +111,14 @@ public class RotacaoDaSala : MonoBehaviour
         }
 
         //ROTAÇÃO DA SALA ATRAVÉS DAS TECLAS/SETAS
-        if (Input.GetKeyDown(KeyCode.A) && !isRotating)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && !isRotating)
         {
             currentSnapAngle = Mathf.Round(transform.eulerAngles.y / 90f) * 90f;
             nextSnapAngle = (currentSnapAngle - 90f + 360f) % 360f;
             targetRotation = Quaternion.Euler(0, nextSnapAngle, 0);
             isRotating = true;
         }
-        else if (Input.GetKeyDown(KeyCode.D) && !isRotating)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && !isRotating)
         {
             currentSnapAngle = Mathf.Round(transform.eulerAngles.y / 90f) * 90f;
             nextSnapAngle = (currentSnapAngle + 90f) % 360f;
