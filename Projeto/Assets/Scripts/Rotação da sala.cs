@@ -12,6 +12,9 @@ public class RotacaoDaSala : MonoBehaviour
     public GameObject Parede3;
     public GameObject Parede4;
 
+    [Header("Puzzle")]
+    [SerializeField] public LockPuzzleum lockPuzzleum;
+
     private bool dragging = false;      //indica se o mouse está sendo movimentado/arrastado
     private bool isRotating = false;        //indica se o objeto está rodando
     private Vector3 lastMousePosition;      //grava a última posição do mouse
@@ -20,7 +23,6 @@ public class RotacaoDaSala : MonoBehaviour
     private float currentSnapAngle;     //demonstra o ângulo atual (arredondando para os múltiplos do 90º)
     private float nextSnapAngle;        //determina o próxima ângulo (mantendo os múltiplos de 90º)
 
-    public static RotacaoDaSala Instance;
 
     void Start()        //Determina tudo o que vai ocorrer no ínicio do jogo
     {
@@ -34,6 +36,10 @@ public class RotacaoDaSala : MonoBehaviour
 
     void Update()       //determina o que vai acontecer a cada frame
     {
+        // Bloqueia toda a lógica se o script estiver desabilitado externamente
+        if (!enabled)
+            return;
+
         //MOVIMENTAÇÃO DO MOUSE
         if (Input.GetMouseButtonDown(0) && !isRotating)     //quando o botão esquerdo do mouse é pressionado sem estar rodando o objeto
         {
@@ -55,11 +61,12 @@ public class RotacaoDaSala : MonoBehaviour
         // MOVIMENTAÇÃO SUAVE DE ÂNGULO EM ÂNGULO
         if (isRotating)
         {
-            transform.rotation = Quaternion.RotateTowards(      //limita quantos graus vai ser rodado por frame
+            transform.rotation = Quaternion.RotateTowards      //limita quantos graus vai ser rodado por frame
+                (
                 transform.rotation,     //determina a rotação em si do objeto
                 targetRotation,     //determina o objetivo final da rotação
                 smoothRotationSpeed * Time.deltaTime        //define a velocidade (em graus por segundo) da rotação, utilizando o Time.deltaTime para ocorrer a cada frame do computador
-            );
+                );
 
             if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f)        //calcula o ângulo de diferença (em graus) entre duas rotações.
             {
@@ -82,7 +89,7 @@ public class RotacaoDaSala : MonoBehaviour
             // Limita a rotação entre +-90°
             float minAngle = (currentSnapAngle - 90f + 360f) % 360f;
             float maxAngle = (currentSnapAngle + 90f) % 360f;
-            
+
             //garante que o movimento não ultrapasse o limite de 90º por giro
             float proposedY = (currentY + rotationAmount + 360f) % 360f;
             bool allowRotation;
@@ -111,14 +118,14 @@ public class RotacaoDaSala : MonoBehaviour
         }
 
         //ROTAÇÃO DA SALA ATRAVÉS DAS TECLAS/SETAS
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && !isRotating)
+        if (Input.GetKeyDown(KeyCode.A) && !isRotating)
         {
             currentSnapAngle = Mathf.Round(transform.eulerAngles.y / 90f) * 90f;
             nextSnapAngle = (currentSnapAngle - 90f + 360f) % 360f;
             targetRotation = Quaternion.Euler(0, nextSnapAngle, 0);
             isRotating = true;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && !isRotating)
+        else if (Input.GetKeyDown(KeyCode.D) && !isRotating)
         {
             currentSnapAngle = Mathf.Round(transform.eulerAngles.y / 90f) * 90f;
             nextSnapAngle = (currentSnapAngle + 90f) % 360f;
@@ -127,14 +134,37 @@ public class RotacaoDaSala : MonoBehaviour
         }
 
         AtualizarParedes();     //Atualiza a função com estas condições
+
+        //Desativa o código LockPuzzleum
+        if (lockPuzzleum != null)
+        {
+            lockPuzzleum.enabled = false;
+        }
     }
 
-    //VISIBILIDADE DAS PAREDES
+    //VISIBILIDADE DAS PAREDES QUANDO DÁ ZOOM
+
+    //Função que obriga todas as paredes a ficarem ativas
+    public void ForcarTodasAsParedes(bool estado)
+    {
+        Parede1.SetActive(estado);
+        Parede2.SetActive(estado);
+        Parede3.SetActive(estado);
+        Parede4.SetActive(estado);
+    }
+
+    //Função que obriga todas as paredes voltarem a configuração padrão
+    public void RestaurarParedesPadrao()
+    {
+        AtualizarParedes();
+    }
+
+    //VISIBILIDADE DAS PAREDES NORMAL
     void AtualizarParedes()     //função para ativar ou desativar as paredes de acordo com a angulação
     {
         float angulo = transform.eulerAngles.y;
 
-        
+
         angulo = (angulo + 360f) % 360f;    // Normaliza o ângulo entre 0 – 360
 
         // INTERVALOS 
@@ -175,16 +205,5 @@ public class RotacaoDaSala : MonoBehaviour
             Parede4.SetActive(true);
         }
     }
-
-    public void OnPauseRoomRotate()
-    {
-
-        Time.timeScale = 0;
-    }
-    public void OnResumeRoomRotate()
-    {
-        Time.timeScale = 1;
-    }
-
 }
 

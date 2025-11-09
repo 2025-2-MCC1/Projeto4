@@ -11,16 +11,26 @@ public class LockPuzzleum : MonoBehaviour
     [SerializeField] private string _codigoPuzzle;
     [SerializeField] private UnityEvent _evento;
 
+    [Header("Configurações do Puzzle")]
+    [SerializeField] private bool usarCilindros = true;
+
     [Header("Objetos do puzile")]
     [SerializeField] private GameObject _lockInterativo;
     [SerializeField] private GameObject _lockPuzzle;
     [SerializeField] private GameObject _vc;
     [SerializeField] private GameObject _Lock;
 
+    [Header("Inspeção de Objeto")]
+    [SerializeField] private PickUp objectPickUp;
+
+    [Header("Rotação da Sala")]
+    [SerializeField] private RotacaoDaSala rotacaoDaSala;
+
     private bool _puzzlesStarts;
     //private float _rotationStep = 20f;
     [SerializeField] private int _cilindrodeAgr = 0;
 
+    //CILINDROS
     private int _cilindro01Step = 0;
     [SerializeField] private GameObject _cilindro01;
 
@@ -39,17 +49,29 @@ public class LockPuzzleum : MonoBehaviour
     private string _cilindro04Numero = "";
 
     private Animator anim;
-    RotacaoDaSala rotacaoDaSala;
 
-    void Start()
-    {
-        
-
-    }
 
     // Update is called once per frame
     void Update()
     {
+        //BLOQUEIO DE SAÍDA DO PUZZLE DURANTE INSPEÇÃO
+        if (_puzzlesStarts)
+        {
+            if (objectPickUp != null && objectPickUp.inspecting)
+                return;
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                EndPuzzle();
+                return;
+            }
+        }
+
+        // SE NÃO USA CILINDROS IGNORA TODA A LÓGICA DELES
+        if (!usarCilindros)
+            return;
+
+        //LÓGICA DOS CILINDROS
         if (_puzzlesStarts == true)
         {
             if (Input.GetMouseButtonDown(1))
@@ -312,13 +334,26 @@ public class LockPuzzleum : MonoBehaviour
 
     public void StartPuzzle()
     {
-        StartCoroutine("PuzzleStart");
+        StartCoroutine(PuzzleStart());
+        //Desativa o código LockPuzzleum
+        if (rotacaoDaSala.lockPuzzleum != null)
+        {
+            rotacaoDaSala.lockPuzzleum.enabled = true;
+        }
     }
 
     public void EndPuzzle()
     {
         GameManager.Instance.UnPauseGame();
-        _lockInterativo.SetActive(false);
+
+        //Reativa rotação da sala e restaura paredes normais
+        if (rotacaoDaSala != null)
+        {
+            rotacaoDaSala.enabled = true;
+            rotacaoDaSala.RestaurarParedesPadrao();
+        }
+
+        _lockInterativo.SetActive(true);
         _lockPuzzle.SetActive(false);
         _vc.SetActive(false);
         _puzzlesStarts = false;
@@ -327,14 +362,27 @@ public class LockPuzzleum : MonoBehaviour
     IEnumerator PuzzleCompleto()
     {
         GameManager.Instance.UnPauseGame();
+        //Reativa rotação da sala e restaura paredes normais
+        if (rotacaoDaSala != null)
+        {
+            rotacaoDaSala.enabled = true;
+            rotacaoDaSala.RestaurarParedesPadrao();
+        }
         anim.SetTrigger("Aberto");
         yield return new WaitForSeconds(1.0f);
         EndPuzzle();
-        
+
     }
 
     IEnumerator PuzzleStart()
     {
+        //Desabilita rotação da sala e exibe todas as paredes
+        if (rotacaoDaSala != null)
+        {
+            rotacaoDaSala.enabled = false;
+            rotacaoDaSala.ForcarTodasAsParedes(true);
+        }
+
         _vc.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         GameManager.Instance.PauseGame();
