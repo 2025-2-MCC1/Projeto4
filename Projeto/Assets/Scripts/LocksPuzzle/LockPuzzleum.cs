@@ -25,9 +25,10 @@ public class LockPuzzleum : MonoBehaviour
 
     [Header("Rotação da Sala")]
     [SerializeField] private RotacaoDaSala rotacaoDaSala;
-
     private bool _puzzlesStarts;
     //private float _rotationStep = 20f;
+
+    [Header("Cilindros")]
     [SerializeField] private int _cilindrodeAgr = 0;
 
     //CILINDROS

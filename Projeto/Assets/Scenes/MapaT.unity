@@ -2262,7 +2262,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 0.28235295, g: 0.28235295, b: 0.28235295, a: 1}
+  m_Color: {r: 0.2735849, g: 0.18119782, b: 0.10711107, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -6870,6 +6870,8 @@ MonoBehaviour:
   Parede3: {fileID: 1706915066}
   Parede4: {fileID: 1528826856}
   lockPuzzleum: {fileID: 879154140}
+  maletaPuzzle: {fileID: 0}
+  PuzzleMaberta: {fileID: 0}
 --- !u!1 &1752627328
 GameObject:
   m_ObjectHideFlags: 0

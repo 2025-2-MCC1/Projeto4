@@ -7,6 +7,7 @@ public class DestruicaoMaleta : MonoBehaviour
     [SerializeField] private GameObject _maletaPuzzle;
     [SerializeField] private GameObject _maletaAberta;
     [SerializeField] private GameObject _vc;
+
     public void SelfDestroy()
     {
         GameManager.Instance.UnPauseGame();
@@ -27,6 +28,5 @@ public class DestruicaoMaleta : MonoBehaviour
         {
             Destroy(_vc);
         }
-
     }
 }

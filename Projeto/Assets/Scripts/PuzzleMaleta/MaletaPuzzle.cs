@@ -15,8 +15,15 @@ public class MaletaPuzzle : MonoBehaviour
     [SerializeField] private GameObject _maletaInterativo;
     [SerializeField] private GameObject _maletaPuzzle;
     [SerializeField] private GameObject _vc;
+    [SerializeField] private GameObject _maleta;
+
+    [Header("Configurações do Puzzle")]
+    [SerializeField] private bool usarCilindros = true;
+    [SerializeField] private RotacaoDaSala rotacaoDaSala;
 
     private bool _puzzlesStarts;
+
+    [Header("Cilindros")]
     //private float _rotationStep = 20f;
     [SerializeField] private int _cilindrodeAgr = 0;
 
@@ -37,7 +44,6 @@ public class MaletaPuzzle : MonoBehaviour
     
 
     private Animator anim;
-    RotacaoDaSala rotacaoDaSala;
 
     void Start()
     {
@@ -48,6 +54,7 @@ public class MaletaPuzzle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (_puzzlesStarts == true)
         {
             if (Input.GetMouseButtonDown(1))
@@ -258,13 +265,24 @@ public class MaletaPuzzle : MonoBehaviour
 
     public void StartPuzzle()
     {
-        StartCoroutine("PuzzleStart");
+        StartCoroutine(PuzzleStart());
+        if (rotacaoDaSala.maletaPuzzle != null)
+        {
+            rotacaoDaSala.maletaPuzzle.enabled = true;
+        }
     }
 
     public void EndPuzzle()
     {
         GameManager.Instance.UnPauseGame();
-        _maletaInterativo.SetActive(false);
+
+        if (rotacaoDaSala != null)
+        {
+            rotacaoDaSala.enabled = true;
+            rotacaoDaSala.RestaurarParedesPadrao();
+        }
+
+        _maletaInterativo.SetActive(true);
         _maletaPuzzle.SetActive(false);
         _vc.SetActive(false);
         _puzzlesStarts = false;
@@ -273,14 +291,30 @@ public class MaletaPuzzle : MonoBehaviour
     IEnumerator PuzzleCompleto()
     {
         GameManager.Instance.UnPauseGame();
+
+        if (rotacaoDaSala != null)
+        {
+            rotacaoDaSala.enabled = true;
+            rotacaoDaSala.RestaurarParedesPadrao();
+        }
+
         anim.SetTrigger("AbertoMaleta");
         yield return new WaitForSeconds(1.0f);
-        EndPuzzle();
+        _maletaInterativo.SetActive(false);
+        _maletaPuzzle.SetActive(false);
+        _vc.SetActive(false);
+        _puzzlesStarts = false;
 
     }
 
     IEnumerator PuzzleStart()
     {
+        if (rotacaoDaSala != null)
+        {
+            rotacaoDaSala.enabled = false;
+            rotacaoDaSala.ForcarTodasAsParedes(true);
+        }
+
         _vc.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         GameManager.Instance.PauseGame();

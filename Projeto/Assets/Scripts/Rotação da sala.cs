@@ -14,6 +14,10 @@ public class RotacaoDaSala : MonoBehaviour
 
     [Header("Puzzle")]
     [SerializeField] public LockPuzzleum lockPuzzleum;
+    [SerializeField] public MaletaPuzzle maletaPuzzle;
+    [SerializeField] public MaletaPuzzle PuzzleMaberta;
+    [SerializeField] public PickupPuzzle pickupPuzzle;
+    
 
     private bool dragging = false;      //indica se o mouse está sendo movimentado/arrastado
     private bool isRotating = false;        //indica se o objeto está rodando
