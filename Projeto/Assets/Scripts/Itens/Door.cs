@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Door : Interactable
 {
@@ -8,6 +10,8 @@ public class Door : Interactable
 
     [Tooltip("ID da Chave. Deve ser o mesmo 'Item' ScriptableObject do Inventory.")]
     // O campo 'conditionalItem' que você definiu na base será a sua CHAVE.
+
+    public UnityEvent doorOpen;
 
     public override void Interact()
     {
@@ -50,5 +54,7 @@ public class Door : Interactable
         Debug.Log("Porta destrancada e liberada!");
 
         Destroy(gameObject);
+
+        doorOpen.Invoke();
     }
 }

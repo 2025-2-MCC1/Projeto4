@@ -32,7 +32,12 @@ public class BookShelfInteract : MonoBehaviour
 
     void Update()
     {
-        
+        //Sair do puzzle
+        if (Input.GetMouseButtonDown(1))
+        {
+            EndPuzzle();
+            return;
+        }
     }
 
     public void StartPuzzle()

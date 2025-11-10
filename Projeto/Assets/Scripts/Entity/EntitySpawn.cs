@@ -129,6 +129,8 @@ public class EntitySpawn : MonoBehaviour
             chosen.rotation
         );
 
+        entityObject.transform.localScale = chosen.localScale;
+
         Debug.Log($"Teleportado para: {chosen.name}");
     }
 

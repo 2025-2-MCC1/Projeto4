@@ -2,45 +2,47 @@
 
 public class ItemRotator : MonoBehaviour
 {
+    //VARIÁVEIS
     [Header("Objeto que será rotacionado")]
     public Transform rotationRoot;
 
-    [Header("Configurações")]
+    [Header("Configurações de velocidade do giro")]
     public float rotationSpeed = 50f;
 
-    [HideInInspector] public bool canRotate = false;
+    [HideInInspector] public bool canRotate = false;    //Diz se pode ou não rotacionar
 
-    private bool dragging = false;
-    private Vector3 lastMousePosition;
+    private bool dragging = false;  //Arrastar do mouse
+    private Vector3 lastMousePosition;  //Grava a última posição do mouse
 
     void Update()
     {
-        // Se não pode rotacionar no momento → sai
+        //Se não pode rotacionar no momento, sai
         if (!canRotate || rotationRoot == null)
             return;
 
-        // Início do drag
+        //Início do arrastar do mouse
         if (Input.GetMouseButtonDown(0))
         {
             dragging = true;
             lastMousePosition = Input.mousePosition;
         }
 
-        // Final do drag
+        //Final do arrastar do mouse
         if (Input.GetMouseButtonUp(0))
         {
             dragging = false;
         }
 
-        // Rotação durante arraste
+        //Ativa a rotação durante o arrasto
         if (dragging)
         {
             Vector3 delta = Input.mousePosition - lastMousePosition;
 
+            //Verificação dos eixos a serem rotacionados
             float rotX = delta.y * rotationSpeed * Time.unscaledDeltaTime;
             float rotY = -delta.x * rotationSpeed * Time.unscaledDeltaTime;
 
-            //Rotação estável em espaço global, sem inverter nunca
+            //Rotação estável em espaço global
             rotationRoot.Rotate(Vector3.up, rotY, Space.World);
             rotationRoot.Rotate(Vector3.right, rotX, Space.World);
 
@@ -48,9 +50,9 @@ public class ItemRotator : MonoBehaviour
         }
     }
 
-    // MÉTODOS USADOS PELO PickUp
-
-    //Versão nova (com parâmetro explícito)
+    //VINCULO COM O PICKUP
+    
+    //Função para ativar a rotação
     public void EnableRotation(bool state)
     {
         canRotate = state;
@@ -59,7 +61,7 @@ public class ItemRotator : MonoBehaviour
             dragging = false;
     }
 
-    //Versão antiga (compatível com seu código atual)
+    //Função para garantir a ativação da rotação
     public void EnableRotation()
     {
         EnableRotation(true);
