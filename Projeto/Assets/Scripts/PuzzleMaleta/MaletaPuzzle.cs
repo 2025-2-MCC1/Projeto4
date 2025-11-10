@@ -21,6 +21,18 @@ public class MaletaPuzzle : MonoBehaviour
     [SerializeField] private bool usarCilindros = true;
     [SerializeField] private RotacaoDaSala rotacaoDaSala;
 
+    //ENTIDADE
+    [Header("Sistema da Entidade")]
+    public EntitySpawn entitySpawn;
+
+    [Header("Ponto de spawn que causa jumpscare neste puzzle")]
+    public Transform puzzleSpawnPoint;
+
+    [Header("Chance de jumpscare (0 = 0%, 1 = 100%)")]
+    [Range(0f, 1f)]
+    public float jumpscareChance = 0.35f;
+
+
     private bool _puzzlesStarts;
 
     [Header("Cilindros")]
@@ -317,9 +329,43 @@ public class MaletaPuzzle : MonoBehaviour
 
         _vc.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        GameManager.Instance.PauseGame();
+        yield return null;      // Aguarda 1 frame para validar posição
         _maletaInterativo.SetActive(false);
         _maletaPuzzle.SetActive(true);
         _puzzlesStarts = true;
+
+        //JUMPSCARE
+        if (entitySpawn != null && puzzleSpawnPoint != null)
+        {
+            //verifica se a entidade está no mesmo ponto que o puzzle acessado
+            if (entitySpawn.IsEntityAt(puzzleSpawnPoint))
+            {
+                //sorteia o valor para o jumpscare
+                float roll = Random.value;
+                Debug.Log("[JUMPSCARE CHECK] Sorteio: " + roll);
+
+                //Se o valor for maior que a chance, então acontece o jumpscare
+                if (roll <= jumpscareChance)
+                {
+                    Debug.Log("[JUMPSCARE] Sucesso");
+                    yield return entitySpawn.TriggerJumpscare();
+                }
+                //Se não, sem jumpscare
+                else
+                {
+                    Debug.Log("[JUMPSCARE] Falhou");
+                }
+            }
+            //Se ela estiver em outro puzzle
+            else
+            {
+                Debug.Log("[JUMPSCARE] Entidade não está no spawn deste puzzle.");
+            }
+        }
+        // Pequena espera antes do pause
+        yield return new WaitForSecondsRealtime(0.1f);
+
+        // Agora pausa o jogo
+        GameManager.Instance.PauseGame();
     }
 }

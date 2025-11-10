@@ -5,23 +5,21 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class PickupPuzzle : MonoBehaviour
+public class BookShelfInteract : MonoBehaviour
 {
     [Header("Informações do puzile")]
     [SerializeField] private UnityEvent _evento;
 
-    [Header("Inspeção de Objeto")]
-    [SerializeField] private PickUp objectPickUp;
-
     [Header("Objetos do puzile")]
-    [SerializeField] private GameObject _pickupInterativo;
-    [SerializeField] private GameObject _pickupPuzzle;
+    [SerializeField] private GameObject _bookshelfInterativo;
+    [SerializeField] private GameObject _bookshelf;
     [SerializeField] private GameObject _vc;
 
     [Header("Rotação da Sala")]
     [SerializeField] private RotacaoDaSala rotacaoDaSala;
     private bool _puzzlesStarts;
 
+    //ENTIDADE
     [Header("Sistema da Entidade")]
     public EntitySpawn entitySpawn;
 
@@ -34,19 +32,7 @@ public class PickupPuzzle : MonoBehaviour
 
     void Update()
     {
-        //BLOQUEIO DE SAÍDA DO PUZZLE DURANTE INSPEÇÃO
-        if (_puzzlesStarts == true)
-        {
-            if (objectPickUp != null && objectPickUp.inspecting)
-                return;
-
-            if (Input.GetMouseButtonDown(1))
-            {
-                EndPuzzle();
-                return;
-            }
-        }
-
+        
     }
 
     public void StartPuzzle()
@@ -70,8 +56,8 @@ public class PickupPuzzle : MonoBehaviour
             rotacaoDaSala.RestaurarParedesPadrao();
         }
 
-        _pickupInterativo.SetActive(true);
-        _pickupPuzzle.SetActive(false);
+        _bookshelfInterativo.SetActive(true);
+        _bookshelf.SetActive(false);
         _vc.SetActive(false);
         _puzzlesStarts = false;
     }
@@ -88,8 +74,8 @@ public class PickupPuzzle : MonoBehaviour
         _vc.SetActive(true);
         yield return null;      // Aguarda 1 frame para validar posição
         yield return new WaitForSeconds(0.5f);
-        _pickupInterativo.SetActive(false);
-        _pickupPuzzle.SetActive(true);
+        _bookshelfInterativo.SetActive(false);
+        _bookshelf.SetActive(true);
         _puzzlesStarts = true;
 
         //JUMPSCARE
@@ -120,7 +106,7 @@ public class PickupPuzzle : MonoBehaviour
                 Debug.Log("[JUMPSCARE] Entidade não está no spawn deste puzzle.");
             }
         }
-        
+
         // Pequena espera antes do pause
         yield return new WaitForSecondsRealtime(0.1f);
 
@@ -128,3 +114,4 @@ public class PickupPuzzle : MonoBehaviour
         GameManager.Instance.PauseGame();
     }
 }
+

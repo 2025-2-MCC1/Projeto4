@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class SanityFXManager : MonoBehaviour
 {
+    //VARIÁVEIS
     [Header("Referência ao Slider de Sanidade (0-100)")]
     public Slider sanitySlider;
 
     [Header("Volume do Post Processing (Global Volume)")]
     public Volume postProcessVolume;
 
-    // Overrides
+    //Overrides
     private Vignette vignette;
     private ChromaticAberration chroma;
     private FilmGrain grain;
@@ -29,7 +30,7 @@ public class SanityFXManager : MonoBehaviour
 
     private void Start()
     {
-        // Pega os efeitos do Volume
+        //Pega os efeitos do Volume
         postProcessVolume.profile.TryGet(out vignette);
         postProcessVolume.profile.TryGet(out chroma);
         postProcessVolume.profile.TryGet(out grain);
@@ -38,23 +39,24 @@ public class SanityFXManager : MonoBehaviour
 
     private void Update()
     {
+        //Pega o valor da sanidade
         float sanity01 = sanitySlider.value / sanitySlider.maxValue;
-        float inverted = 1f - sanity01; // 0 = normal, 1 = insano
+        float inverted = 1f - sanity01; //0 = normal, 1 = insano
 
-        // Vignette
+        //Vignette
         vignette.intensity.value = Mathf.Lerp(0f, maxVignette, inverted);
 
-        // Aberração Cromática
+        //Aberração Cromática
         chroma.intensity.value = Mathf.Lerp(0f, maxChromatic, inverted);
 
-        // Grain
+        //Grain
         grain.intensity.value = Mathf.Lerp(0f, maxGrain, inverted);
 
-        // Lens Distortion com wobble para dar “respiração”
+        //Lens Distortion com wobble para dar um efeito de “respiração”
         float wobble = Mathf.Sin(Time.time * wobbleSpeed) * wobbleIntensity * inverted;
         distortion.intensity.value = Mathf.Lerp(0f, maxDistortion, inverted) + wobble;
 
-        // Segurança
+        //Segurança
         distortion.scale.value = 1f;
     }
 }

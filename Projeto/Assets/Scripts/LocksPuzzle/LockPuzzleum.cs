@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class LockPuzzleum : MonoBehaviour
 {
+    //VARIÁVEIS
     [Header("Informações do puzile")]
     [SerializeField] private string _codigoPuzzle;
     [SerializeField] private UnityEvent _evento;
@@ -20,13 +21,22 @@ public class LockPuzzleum : MonoBehaviour
     [SerializeField] private GameObject _vc;
     [SerializeField] private GameObject _Lock;
 
-    [Header("Inspeção de Objeto")]
-    [SerializeField] private PickUp objectPickUp;
-
     [Header("Rotação da Sala")]
     [SerializeField] private RotacaoDaSala rotacaoDaSala;
     private bool _puzzlesStarts;
     //private float _rotationStep = 20f;
+
+    //ENTIDADE
+    [Header("Sistema da Entidade")]
+    public EntitySpawn entitySpawn;
+
+    [Header("Ponto de spawn que causa jumpscare neste puzzle")]
+    public Transform puzzleSpawnPoint;
+
+    [Header("Chance de jumpscare (0 = 0%, 1 = 100%)")]
+    [Range(0f, 1f)]
+    public float jumpscareChance = 0.35f;
+
 
     [Header("Cilindros")]
     [SerializeField] private int _cilindrodeAgr = 0;
@@ -55,18 +65,6 @@ public class LockPuzzleum : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //BLOQUEIO DE SAÍDA DO PUZZLE DURANTE INSPEÇÃO
-        if (_puzzlesStarts)
-        {
-            if (objectPickUp != null && objectPickUp.inspecting)
-                return;
-
-            if (Input.GetMouseButtonDown(1))
-            {
-                EndPuzzle();
-                return;
-            }
-        }
 
         // SE NÃO USA CILINDROS IGNORA TODA A LÓGICA DELES
         if (!usarCilindros)
@@ -385,10 +383,45 @@ public class LockPuzzleum : MonoBehaviour
         }
 
         _vc.SetActive(true);
+        yield return null;      // Aguarda 1 frame para validar posição
         yield return new WaitForSeconds(0.5f);
-        GameManager.Instance.PauseGame();
         _lockInterativo.SetActive(false);
         _lockPuzzle.SetActive(true);
         _puzzlesStarts = true;
+
+        //JUMPSCARE
+        if (entitySpawn != null && puzzleSpawnPoint != null)
+        {
+            //verifica se a entidade está no mesmo ponto que o puzzle acessado
+            if (entitySpawn.IsEntityAt(puzzleSpawnPoint))
+            {
+                //sorteia o valor para o jumpscare
+                float roll = Random.value;
+                Debug.Log("[JUMPSCARE CHECK] Sorteio: " + roll);
+
+                //Se o valor for maior que a chance, então acontece o jumpscare
+                if (roll <= jumpscareChance)
+                {
+                    Debug.Log("[JUMPSCARE] Sucesso");
+                    yield return entitySpawn.TriggerJumpscare();
+                }
+                //Se não, sem jumpscare
+                else
+                {
+                    Debug.Log("[JUMPSCARE] Falhou");
+                }
+            }
+            //Se ela estiver em outro puzzle
+            else
+            {
+                Debug.Log("[JUMPSCARE] Entidade não está no spawn deste puzzle.");
+            }
+        }
+        
+        // Pequena espera antes do pause
+        yield return new WaitForSecondsRealtime(0.1f);
+
+        // Agora pausa o jogo
+        GameManager.Instance.PauseGame();
     }
 }

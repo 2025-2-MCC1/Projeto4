@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class FoboExpressionsUI : MonoBehaviour
 {
+    
+    //VARIÁVEIS
     [Header("Referências")]
     public SanityManager sanityManager;
     private Image image;
@@ -13,21 +15,23 @@ public class FoboExpressionsUI : MonoBehaviour
     public Sprite superTensoSprite;
     public Sprite mortoSprite;
 
-    private bool entrouEmMorto = false; // <- registra se o susto ocorreu
-    private FoboState estadoAtual = FoboState.Normal;
+    private bool entrouEmMorto = false; //registra se ativou o estado morto
+    private FoboState estadoAtual = FoboState.Normal;   //determina o estado do Fobo, iniciando no estado normal
 
     void Start()
     {
+        //Coloca a imagem do Fobo
         image = GetComponent<Image>();
         if (image == null)
         {
-            Debug.LogError("[FoboExpressionsUI] Nenhum Image encontrado!");
+            Debug.LogError("Nenhum Image encontrado!");
             return;
         }
 
         if (sanityManager == null)
-            Debug.LogWarning("[FoboExpressionsUI] SanityManager não atribuído!");
+            Debug.LogWarning("SanityManager não atribuído!");
 
+        //iniciando no estado normal
         SetState(FoboState.Normal);
     }
 
@@ -38,11 +42,12 @@ public class FoboExpressionsUI : MonoBehaviour
 
         float currentSanity = sanityManager.sanitySlider.value;
 
-        // --- Valor exatamente 10: chance de susto ---
+        //Determina que se a sanidade chegar ao valor 10
         if (currentSanity == 10f)
         {
             if (!entrouEmMorto)
             {
+                //Coloca uma chance de 5% dele entrar no estado morto
                 if (Random.value <= 0.05f)
                 {
                     entrouEmMorto = true;
@@ -52,32 +57,13 @@ public class FoboExpressionsUI : MonoBehaviour
                 }
             }
 
-            // 95% ou já tinha passado sem susto
+            //Os outros 95% mantem o estado de SuperTenso
             SetState(FoboState.SuperTenso);
             estadoAtual = FoboState.SuperTenso;
             return;
         }
 
-        // --- Abaixo de 10: mantém o estado anterior ---
-        if (currentSanity < 10f)
-        {
-            if (entrouEmMorto)
-            {
-                // Já entrou em morto antes → mantém morto
-                SetState(FoboState.Morto);
-                estadoAtual = FoboState.Morto;
-                return;
-            }
-            else
-            {
-                // Nunca teve susto → mantém SuperTenso
-                SetState(FoboState.SuperTenso);
-                estadoAtual = FoboState.SuperTenso;
-                return;
-            }
-        }
-
-        // --- Lógica normal para valores acima de 10 ---
+        //Atualiza o Estado do Fobo de acordo com o valor da sanidade
         FoboState novoEstado;
 
         if (currentSanity > 6600f)
@@ -87,6 +73,7 @@ public class FoboExpressionsUI : MonoBehaviour
         else
             novoEstado = FoboState.SuperTenso;
 
+        //Substitui o Estado atual pelo novo Estado
         if (novoEstado != estadoAtual)
         {
             estadoAtual = novoEstado;
@@ -94,8 +81,10 @@ public class FoboExpressionsUI : MonoBehaviour
         }
     }
 
+    //Lista dos estados
     enum FoboState { Normal, Tenso, SuperTenso, Morto }
 
+    //FUNÇÃO PARA PEGAR CADA ESTADO
     void SetState(FoboState state)
     {
         if (image == null)
