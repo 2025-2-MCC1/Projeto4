@@ -45,6 +45,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler     //IPointerClickH
     }
 
     //faz a verificação se o item está no slot ou se é um slot vazio
+    // ItemSlot.cs
+
     private void OnLeftClick()
     {
         if (inventory == null)
@@ -53,21 +55,31 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler     //IPointerClickH
             return;
         }
 
-        //se o slot já estava selecionado, desseleciona tudo
+        // Se o slot está vazio, deseleciona tudo e sai. ---
+        if (Item == null)
+        {
+            inventory.DeselectAllSlots();
+            // Se já estava selecionado, ele deseleciona e termina.
+            // Se estava vazio e deselecionado, não faz nada.
+            return;
+        }
+        // -----------------------------------------------------------------------
+
+        // Se o slot JÁ estava selecionado, DESSELECIONA tudo (limpar seleção ativa)
         if (thisItemSelected)
         {
             inventory.DeselectAllSlots();
             return;
         }
 
-        //desseleciona todos os slots e seleciona este
+        // Se o slot CONTÉM um item e não estava selecionado, SELECIONA ele.
         inventory.DeselectAllSlots();
         Select();
     }
 
     private void OnRightClick()
     {
-        
+
     }
 
     public void Select()
@@ -93,8 +105,21 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler     //IPointerClickH
         // Debug.Log($"ItemSlot.Deselect -> {gameObject.name}");
     }
 
+
+    // ItemSlot.cs
+
     internal void ClearSlot()
     {
-        throw new NotImplementedException();
+        // CHAMA A REMOÇÃO VISUAL NO UI MANAGER (SE O ITEM EXISTE)
+        if (Item != null)
+        {
+            UiManager.RemoveInventoryImage(Item);
+        }
+
+        // Limpa a referência interna (ESSENCIAL!)
+        Item = null;
+
+        // Garante que o shader de seleção desapareça
+        Deselect();
     }
 }

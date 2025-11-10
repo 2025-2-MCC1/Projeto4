@@ -18,7 +18,7 @@ public class UiManager : MonoBehaviour
 
     private void Awake()        //função que ocorre antes do primeiro frame
     {
-        
+
         //se não houver nenhuma instância, então será essa
         if (instance == null)
         {
@@ -33,11 +33,11 @@ public class UiManager : MonoBehaviour
 
 
 
-    
+
     //DETERMINA A IMAGEM NO INVENTÁRIO
     public static void SetInventoryImage(Item item)     //função para colocar a imagem do item
     {
-        
+
         //se não tiver nada, não faz nada
         if (instance == null)
         {
@@ -57,10 +57,28 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    //REMOVER IMAGEM DO INVENTÁRIO
-    internal static void RemoveInventoryImage(Item usedItem)        //função para remover a imagem do inventário
+    // Remove a imagem do inventário (Limpa o slot visualmente)
+    internal static void RemoveInventoryImage(Item usedItem)
     {
-        //necessário criar a interação do item com o objeto na cena para formação desta parte do código
-        throw new NotImplementedException();
+        if (instance == null || usedItem == null)
+        {
+            return;
+        }
+
+        // Procura na lista de imagens qual tem o sprite correspondente ao item usado
+        for (int i = 0; i < instance.iventoryImages.Length; i++)
+        {
+            Image img = instance.iventoryImages[i];
+
+            // Verifica se a imagem está ativa e se o sprite corresponde ao item usado
+            if (img.gameObject.activeInHierarchy && img.sprite == usedItem.itemImage)
+            {
+                // LIMPEZA VISUAL:
+                img.sprite = null; // Zera o sprite
+                img.gameObject.SetActive(false); // Desativa o objeto (igual ao que SetInventoryImage checa)
+
+                return; // Item visualmente removido
+            }
+        }
     }
 }
