@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,9 +9,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler     //IPointerClickH
     public GameObject selectedShader;       //função que verifica se o painel de destaque (SelectedPanel) está ativo
     public bool thisItemSelected;       //função que verifica se o item está selecionado ou não
     public Item Item;
+    public GameObject descriptionPanel;
 
     [Header("Runtime")]
     public Inventory inventory;     //pode arrastar no inspector ou será buscado no Start
+
+    //ItemDescription
+    public TMP_Text ItemDescription;
 
     private void Awake()
     {
@@ -32,6 +37,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler     //IPointerClickH
         }
 
         Debug.Log($"ItemSlot.Start - name: {gameObject.name} | inventory: {(inventory != null ? inventory.name : "null")} | selectedShader: {(selectedShader != null ? selectedShader.name : "null")}");
+        descriptionPanel.SetActive(false);
     }
 
     //faz o inventário poder ser clicável
@@ -55,7 +61,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler     //IPointerClickH
             return;
         }
 
-        // Se o slot está vazio, deseleciona tudo e sai. ---
+        // Se o slot está vazio, deseleciona tudo e sai.
         if (Item == null)
         {
             inventory.DeselectAllSlots();
@@ -86,8 +92,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler     //IPointerClickH
     {
         if (selectedShader != null)
             selectedShader.SetActive(true);
+        descriptionPanel.SetActive(true);
 
         thisItemSelected = true;
+
+
+        ItemDescription.text = Item.description;
 
         //atualiza o slot selecionado no Inventory
         if (inventory != null)
@@ -103,6 +113,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler     //IPointerClickH
             selectedShader.SetActive(false);
         thisItemSelected = false;
         // Debug.Log($"ItemSlot.Deselect -> {gameObject.name}");
+        descriptionPanel.SetActive(false);
     }
 
 
