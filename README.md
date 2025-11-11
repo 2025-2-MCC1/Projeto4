@@ -23,9 +23,7 @@ Vide tutoriais do PI.
 
 <p align="center">
 <img src="https://i.postimg.cc/6QQdqHsp/Capa-Jogo-PI.jpg" alt="NOME DO JOGO" border="0">
-  Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
-</p>
-
+  
 
 O jogo "Quarto Fobo" foi criado pelo grupo 4, sendo semelhante a títulos de jogos do gênero escape room. O jogador assume o papel do personagem principal, Fobo, um indivíduo que precisa resolver puzzles e desafios lógicos para escapar do quarto. Ao decorrer do jogo, é necessário explorar a sala, interagir com os objetos, achar itens importantes e decifrar enigmas, utilizando os sentidos e o raciocínio para progredir e fugir da entidade que o persegue cada vez que sua sanidade vai diminuindo.
 Seguindo uma proposta divertida e desafiadora, Quarto Fobo busca, em grande parte, despertar o sentimentalismo do jogador em relação ao estado atual do personagem principal, que se encontra totalmente frágil mentalmente. Mais do que um simples jogo, ele se baseia em uma ideia de fazer com que o jogador se coloque no lugar de Fobo e perceba os níveis mentais em que se encontra o personagem.
