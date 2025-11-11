@@ -22,19 +22,13 @@ Vide tutoriais do PI.
 ## Descrição
 
 <p align="center">
-<img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" alt="NOME DO JOGO" border="0">
+<img src="https://i.postimg.cc/6QQdqHsp/Capa-Jogo-PI.jpg" alt="NOME DO JOGO" border="0">
   Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
 </p>
 
 
-Quarto Fobo é um jogo demo, criado pelo grupo 4, que tem como estilo jogos como Escape Room, nosso jogo foca na mecânica de puzzles envolvendo estilos diferentes de câmera e interações interativas de diferentes objetos para conquistar o objetivo final do nosso personagem, Fobo, que busca sair da sala onde está presente.
-O jogo busca em sua grande parte entreter e reforçar a reflexão e visão lógica para com os desafios proporcionados durante a gameplay, além de buscar abranger questões sentimentalistas para com o personagem e sua situação no jogo. Portanto, espero que tenhamos transparecido nossa missão e visão do jogo para vós todos!
-<br><br>
-O jogo até então foca nas implementações da estrutura básica e na programação das cenas iniciais, o Menu Principal conta com três botões: PLAY, SETTINGS e QUIT. Ao acessar a aba de settings, estão disponíveis dois componentes, o controle de volume do jogo e a sensibilidade da rotação do mouse, ambos ainda inoperantes nesta fase do desenvolvimento. Retornando ao Menu Principal, ao clicar em play, o jogador é direcionado para uma tela com quatro opções: Novo Jogo, Carregar Jogo, Salvar Jogo e voltar ao menu principal. No momento, apenas as opções Novo Jogo e voltar ao menu principal estão funcionais, levando o jogador diretamente à Cena do Jogo Principal. Em relação à programação do menu, foram criadas variáveis correspondentes a cada menu e botão dentro do jogo, além de um sistema baseado em variáveis usando o sistema de true ou false, utilizando métodos public void como base do código neste estágio do projeto.
-<br><br>
-Até o momento o jogo encontra-se com uma única cena principal, que, por se tratar de um quarto contará com as mobílias adequadas (como cama, armários, mesa, escrivaninha, entre outros). Uma parte dessas mobílias serão interativas com o jogador, que ao clicar em determinada, terá a oportunidade de ver o que a mobília armazena, e se for parte da trama do jogo ele terá a chance de usar o item para a resolução de puzzles (por exemplo, será possível abrir um armário, e ver se dentro dele há algum item que possa ser usado na resolução de algum dos quebra-cabeças da cena).
-<br><br>
-
+O jogo "Quarto Fobo" foi criado pelo grupo 4, sendo semelhante a títulos de jogos do gênero escape room. O jogador assume o papel do personagem principal, Fobo, um indivíduo que precisa resolver puzzles e desafios lógicos para escapar do quarto. Ao decorrer do jogo, é necessário explorar a sala, interagir com os objetos, achar itens importantes e decifrar enigmas, utilizando os sentidos e o raciocínio para progredir e fugir da entidade que o persegue cada vez que sua sanidade vai diminuindo.
+Seguindo uma proposta divertida e desafiadora, Quarto Fobo busca, em grande parte, despertar o sentimentalismo do jogador em relação ao estado atual do personagem principal, que se encontra totalmente frágil mentalmente. Mais do que um simples jogo, ele se baseia em uma ideia de fazer com que o jogador se coloque no lugar de Fobo e perceba os níveis mentais em que se encontra o personagem.
 
 # Projeto 4
 
